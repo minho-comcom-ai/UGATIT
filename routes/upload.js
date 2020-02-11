@@ -1,33 +1,29 @@
 const express = require('express');
 const multer = require('multer');
-const rootDir = "/workspace/";
+const rootDir = "/workspace/"; 
 const router = express.Router();
-const storageB = multer.diskStorage({
+const nanoid = require('nanoid')
+
+
+const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, `${rootDir}dataset/selfie2anime/testB`)
+        const {option} = req.query;
+        let destinationDir = option === 'anime2person' ? 'testB' : 'testA';
+        console.log(option, destinationDir);
+        cb(null, `${rootDir}dataset/selfie2anime/${destinationDir}`)
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname)
+        const type = file.originalname.split(".").pop();
+        cb(null, `${nanoid(5)}.${type}`)
     }
 })
-const storageA = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, `${rootDir}dataset/selfie2anime/testA`)
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.originalname)
-    }
-})
-const uploadB = multer({ storage: storageB });
-const uploadA = multer({ storage: storageA });
-router.post('/testB', uploadB.single('file'), (req, res) => {
+const upload = multer({ storage: storage });
+
+
+router.post('/', upload.single('file'), (req, res) => {
     const { file } = req;
     if (!file) { res.json({ "status": false }); }
-    else { res.json({ "status": true }); }
+    else { res.json({ "status": true, "filename": file.filename }); }
 });
-router.post('/testA', uploadA.single('file'), (req, res) => {
-    const { file } = req;
-    if (!file) { res.json({ "status": false }); }
-    else { res.json({ "status": true }); }
-});
+
 module.exports = router;

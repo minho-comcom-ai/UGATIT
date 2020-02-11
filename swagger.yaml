@@ -1,0 +1,46 @@
+openapi: 3.0.1
+info:
+
+servers:
+   - url: 'http://35.200.74.68/'
+
+paths:
+  /eval/uploadAndEval:
+    post:
+      tags:
+      - UGATIT
+      parameters: 
+      - name: option
+        in: query
+        description: "Select the Image Translation Model"
+        required: true
+        allowEmptyValue: false
+        explode: false
+        schema:
+          type: string
+          enum:
+            - anime2person
+            - person2anime
+      requestBody:
+         description: "please eng file name"
+         content:
+            multipart/form-data:
+               schema:
+                  type: object
+                  properties:
+                     files:
+                        type: string
+                        format: binary
+      
+      responses:
+         '200':
+            description: image translation success
+            content:
+               images/*:
+                  schema:
+                     type: string
+                     format: binary
+         '400':
+            description: Bad request (File Not Uploaded)
+         '500':
+            description: Server Side Error (Model Test Error, File Move Error)

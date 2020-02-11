@@ -14,9 +14,9 @@ This repository provides the **official Tensorflow implementation** of the follo
 > **Abstract** *We propose a novel method for unsupervised image-to-image translation, which incorporates a new attention module and a new learnable normalization function in an end-to-end manner. The attention module guides our model to focus on more important regions distinguishing between source and target domains based on the attention map obtained by the auxiliary classifier. Unlike previous attention-based methods which cannot handle the geometric changes between domains, our model can translate both images requiring holistic changes and images requiring large shape changes. Moreover, our new AdaLIN (Adaptive Layer-Instance Normalization) function helps our attention-guided model to flexibly control the amount of change in shape and texture by learned parameters depending on datasets. Experimental results show the superiority of the proposed method compared to the existing state-of-the-art models with a fixed network architecture and hyper-parameters.*
 
 ## Requirements
-* python == 3.6
-* tensorflow == 1.14
-
+```
+> pip install -r requirements.txt
+```
 ## Pretrained model
 > We released 50 epoch and 100 epoch checkpoints so that people could test more widely.
 * [selfie2anime checkpoint (50 epoch)](https://drive.google.com/file/d/1V6GbSItG3HZKv3quYs7AP0rr1kOCT3QO/view?usp=sharing)
@@ -56,7 +56,7 @@ This repository provides the **official Tensorflow implementation** of the follo
 
 ### Train
 ```
-> python main.py --dataset selfie2anime
+> python main.py
 ```
 * If the memory of gpu is **not sufficient**, set `--light` to **True**
   * But it may **not** perform well
@@ -64,7 +64,7 @@ This repository provides the **official Tensorflow implementation** of the follo
 
 ### Test
 ```
-> python main.py --dataset selfie2anime --phase test
+> python main.py 
 ```
 
 ## Architecture
