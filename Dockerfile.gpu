@@ -1,4 +1,4 @@
-FROM python:3.6.10
+FROM tensorflow/tensorflow:1.14.0-gpu-py3
 
 CMD ["bash"]
 
@@ -20,7 +20,7 @@ RUN npm install
 
 COPY . .
 #install python package
-RUN pip install -r requirements.txt
+RUN pip install -r requirements-gpu.txt
 
 EXPOSE 80
 ENTRYPOINT npm start

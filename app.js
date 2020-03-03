@@ -7,6 +7,7 @@ const cron = require("node-cron");
 const indexRouter = require('./routes/index');
 const uploadRouter = require('./routes/upload');
 const evaluationRouter = require('./routes/evaluation');
+var cors = require("cors");
 
 const app = express();
 
@@ -27,6 +28,9 @@ console.log(path.join(__dirname, 'public'))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(cors({
+    origin: 'https://ainze.ai',
+  }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -1,8 +1,15 @@
 openapi: 3.0.1
 info:
-
+   title: Ainized-UGATIT 
+   description: " "
+   contact:
+      name: Ainizer - Lee WooJae
+      email: wodndl895@gmail.com
+   version: 1.0.0
+   license:
+      url: https://github.com/taki0112/UGATIT
 servers:
-   - url: 'http://35.200.74.68/'
+   - url: 'https://ugatit-gpu.kmswlee.endpoint.dev.ainize.ai'
 
 paths:
   /eval/uploadAndEval:
