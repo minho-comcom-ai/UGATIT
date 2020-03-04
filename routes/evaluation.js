@@ -60,7 +60,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage });
 
-router.post('/uploadAndEval', upload.single('file'), async (req, res) => { 
+router.post('/uploadAndEval', upload.single('files'), async (req, res) => { 
     const { option } = req.query;
     const { file } = req;
 

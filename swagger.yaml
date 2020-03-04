@@ -9,7 +9,7 @@ info:
    license:
       url: https://github.com/taki0112/UGATIT
 servers:
-   - url: 'https://ugatit-gpu.kmswlee.endpoint.dev.ainize.ai'
+   - url: 'https://ugatit-gpu.kmswlee.endpoint.ainize.ai'
 
 paths:
   /eval/uploadAndEval:
@@ -31,13 +31,10 @@ paths:
       requestBody:
          description: "please eng file name"
          content:
-            multipart/form-data:
+            image/png:
                schema:
-                  type: object
-                  properties:
-                     files:
-                        type: string
-                        format: binary
+                  type: string
+                  format: binary
       
       responses:
          '200':

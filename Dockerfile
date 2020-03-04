@@ -19,6 +19,7 @@ COPY package.json ./
 RUN npm install
 
 COPY . .
+
 #install python package
 RUN pip install -r requirements.txt
 
