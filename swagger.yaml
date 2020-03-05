@@ -31,10 +31,13 @@ paths:
       requestBody:
          description: "please eng file name"
          content:
-            image/png:
+            multipart/form-data:
                schema:
-                  type: string
-                  format: binary
+                  type: object
+                  properties:
+                     files:
+                        type: string
+                        format: binary
       
       responses:
          '200':
