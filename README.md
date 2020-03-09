@@ -25,6 +25,10 @@ if want to use gpu mode,
 ```
 ## Pretrained model
 > We released 50 epoch and 100 epoch checkpoints so that people could test more widely.
+> 
+> steps:
+> 1. download checkpoint you want to.
+> 2. unzip download file on your cloned remote folder. don't change folder, file names.
 * [selfie2anime checkpoint (50 epoch)](https://drive.google.com/file/d/1V6GbSItG3HZKv3quYs7AP0rr1kOCT3QO/view?usp=sharing)
 * [selfie2anime checkpoint (100 epoch)](https://drive.google.com/file/d/19xQK2onIy-3S5W5K-XIh85pAg_RNvBVf/view?usp=sharing)
 
