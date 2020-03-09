@@ -19,6 +19,10 @@ This repository provides the **official Tensorflow implementation** of the follo
 ```
 > pip install -r requirements.txt
 ```
+if want to use gpu mode,
+```
+> pip install -r requirements-gpu.txt
+```
 ## Pretrained model
 > We released 50 epoch and 100 epoch checkpoints so that people could test more widely.
 * [selfie2anime checkpoint (50 epoch)](https://drive.google.com/file/d/1V6GbSItG3HZKv3quYs7AP0rr1kOCT3QO/view?usp=sharing)
