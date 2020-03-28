@@ -29,16 +29,15 @@ paths:
             - anime2person
             - person2anime
       requestBody:
-         description: "please eng file name"
+         description: "please only input jpeg/png file. if you input other files(not jpg/png), this will not work."
          content:
-            multipart/form-data:
+           multipart/form-data:
                schema:
                   type: object
                   properties:
                      files:
                         type: string
                         format: binary
-      
       responses:
          '200':
             description: image translation success

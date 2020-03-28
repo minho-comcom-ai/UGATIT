@@ -1,5 +1,6 @@
 [![Run on Ainize](https://ainize.ai/static/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=github.com/kmswlee/UGATIT)
-
+>if you use Ainize, please input jpg/png file.</br>
+if you input other file not jpg/png, It will not work.please do not input other kinds of file.
 ## U-GAT-IT &mdash; Official TensorFlow Implementation (ICLR 2020)
 ### : Unsupervised Generative Attentional Networks with Adaptive Layer-Instance Normalization for Image-to-Image Translation
 
