@@ -34,9 +34,9 @@ app.use(cors({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use("/results", express.static(path.join(__dirname, './results/UGATIT_selfie2anime_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')));
+// app.use("/results", express.static(path.join(__dirname, './results/UGATIT_selfie2anime_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing')));
 app.use('/', indexRouter);
-app.use('/upload', uploadRouter);
+// app.use('/upload', uploadRouter);
 app.use('/eval', evaluationRouter);
 
 const server = app.listen(80, () => {

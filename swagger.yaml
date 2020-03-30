@@ -1,15 +1,16 @@
 openapi: 3.0.1
 info:
-   title: Ainized-UGATIT 
-   description: " "
-   contact:
-      name: Ainizer - Lee WooJae
-      email: wodndl895@gmail.com
-   version: 1.0.0
-   license:
-      url: https://github.com/taki0112/UGATIT
+  title: Ainized-UGATIT 
+  description: " "
+  contact:
+    name: Ainizer - Lee WooJae
+    email: wodndl895@gmail.com
+  version: 1.0.0
+  license:
+    name: "MIT"
+    url: https://github.com/taki0112/UGATIT
 servers:
-   - url: 'https://ugatit-gpu.kmswlee.endpoint.ainize.ai'
+  - url: 'https://ugatit-gpu.kmswlee.endpoint.ainize.ai'
 
 paths:
   /eval/uploadAndEval:
@@ -29,15 +30,21 @@ paths:
             - anime2person
             - person2anime
       requestBody:
-         description: "please only input jpeg/png file. if you input other files(not jpg/png), this will not work."
-         content:
-           multipart/form-data:
-               schema:
-                  type: object
-                  properties:
-                     files:
-                        type: string
-                        format: binary
+        description: "please only input jpeg/png file. if you input other files(not jpg/png), this will not work."
+        content:
+          required: true
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: string
+                  format: binary
+                required:
+                  - files
+            encoding:
+              files:
+                contentType: image/*
       responses:
          '200':
             description: image translation success
