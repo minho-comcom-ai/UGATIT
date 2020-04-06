@@ -70,7 +70,6 @@ const upload = multer({ storage, fileFilter });
 router.post('/uploadAndEval', upload.single('files'), async (req, res) => { 
     const { option } = req.query;
     const { file } = req;
-    
     // <->
     if (isRun){
         res.status(429).send("Please Retry later..")
@@ -85,16 +84,16 @@ router.post('/uploadAndEval', upload.single('files'), async (req, res) => {
         const jpgOutput=`/workspace/results/UGATIT_selfie2anime_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing/${file.filename}`;
         res.download(jpgOutput);
         isRun = false;
-        exec('rm -f /workspace/dataset/selfie2anime/testA/* /workspace/dataset/selfie2anime/testB/* ', (error,stdout,stderr)=> {
-            if (error){
-                console.log(`error:${error.message}`);
-                return;
-            }
-            if (stderr){
-                console.log(`stderr:${stderr}`);
-                return;
-            }
-        })
+        // exec('rm -f /workspace/dataset/selfie2anime/testA/* /workspace/dataset/selfie2anime/testB/* ', (error,stdout,stderr)=> {
+        //     if (error){
+        //         console.log(`error:${error.message}`);
+        //         return;
+        //     }
+        //     if (stderr){
+        //         console.log(`stderr:${stderr}`);
+        //         return;
+        //     }
+        // })
     }
 });
 module.exports = router;

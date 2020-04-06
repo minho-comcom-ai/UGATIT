@@ -101,9 +101,10 @@
                         .then(blob => URL.createObjectURL(blob))
                         // (magic ends)
                         .then(imageURL => {
-                            document.getElementById('result').style.display = 'block';
+                            document.getElementById('result').style.display = "block";
                             document.getElementById('resultImage').src = imageURL;
-                            
+                            document.getElementById("preloader").style.display = "none";
+                            clearInterval(timer);
                         });
                 };
             </script>

@@ -24,6 +24,31 @@ cron.schedule('*/5 * * * *', () => {
     })
   });
 
+cron.schedule('*/1 * * * *', () => {
+  exec("find /workspace/dataset/selfie2anime/testA/* -mmin +2 -exec rm -f {} \\;", (error,stdout,stderr)=> {
+      if (error){
+          console.log(`error:${error.message}`);
+          return;
+      }
+      if (stderr){
+          console.log(`stderr:${stderr}`);
+          return;
+      }
+  })
+});
+cron.schedule('*/1 * * * *', () => {
+  exec("find /workspace/dataset/selfie2anime/testB/* -mmin +2 -exec rm -f {} \\;", (error,stdout,stderr)=> {
+      if (error){
+          console.log(`error:${error.message}`);
+          return;
+      }
+      if (stderr){
+          console.log(`stderr:${stderr}`);
+          return;
+      }
+  })
+});
+
 console.log(path.join(__dirname, 'public'))
 app.use(logger('dev'));
 app.use(express.json());

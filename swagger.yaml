@@ -32,7 +32,6 @@ paths:
       requestBody:
         description: "please only input jpeg/png file. if you input other files(not jpg/png), this will not work."
         content:
-          required: true
           multipart/form-data:
             schema:
               type: object
@@ -40,20 +39,18 @@ paths:
                 files:
                   type: string
                   format: binary
-                required:
-                  - files
-            encoding:
-              files:
-                contentType: image/*
+                
       responses:
-         '200':
+          '200':
             description: image translation success
             content:
                images/*:
                   schema:
                      type: string
                      format: binary
-         '400':
+          '400':
             description: Bad request (File Not Uploaded)
-         '500':
+          '429':
+            description: Please Reply later
+          '500':
             description: Server Side Error (Model Test Error, File Move Error)
