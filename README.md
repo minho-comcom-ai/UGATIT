@@ -74,6 +74,20 @@ if want to use gpu mode,
   * But it may **not** perform well
   * paper version is `--light` to **False**
 
+### RUN on local
+```
+> git clone https://github.com/kmswlee/UGATIT
+> cd UGATIT
+> pip install -r requirements-gpu.txt
+# if you can't use gpu, use requirements.txt
+> apt-get -y install curl gnupg
+> curl -sL https://deb.nodesource.com/setup_12.x 
+> apt-get -y install nodejs
+> rm -rf node_modules && npm install
+> npm start
+```
+you can browser http://localhost
+
 ### RUN on Docker
 ```
 > git clone https://github.com/kmswlee/UGATIT
