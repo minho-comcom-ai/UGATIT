@@ -67,16 +67,22 @@ if want to use gpu mode,
 
 ### Train
 ```
-> python main.py
+> python main.py --phase train
+# default phase is test
 ```
 * If the memory of gpu is **not sufficient**, set `--light` to **True**
   * But it may **not** perform well
   * paper version is `--light` to **False**
 
-### Test
+### RUN on Docker
 ```
-> python main.py 
+> git clone https://github.com/kmswlee/UGATIT
+> cd UGATIT
+> docker build -f Dockerfile.gpu -t ugatit .
+> docker run -p 80:80 ugatit
 ```
+you can browser http://localhost  
+if you can't use gpu, use `Dockerfile` **not** `Dockerfile.gpu`
 
 ## Architecture
 <div align="center">
