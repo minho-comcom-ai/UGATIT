@@ -4,6 +4,7 @@ const {PythonShell} = require("python-shell");
 var fs=require("fs");
 const nanoid = require('nanoid')
 const { exec } = require("child_process");
+const FileType = require('file-type');
 var isRun=false;
 // https://stackoverflow.com/questions/1880198/how-to-execute-shell-command-in-javascript
 let router = express.Router();
@@ -74,26 +75,22 @@ router.post('/uploadAndEval', upload.single('files'), async (req, res) => {
     if (isRun){
         res.status(429).send("Please Retry later..")
         return ;
-    }  
+    }
     if (!file) {
         res.json({ "status": false, "result": null });
     }
     else {
         isRun = true;
+        try{
         const result = await runPython();
         const jpgOutput=`/workspace/results/UGATIT_selfie2anime_lsgan_4resblock_6dis_1_1_10_10_1000_sn_smoothing/${file.filename}`;
         res.download(jpgOutput);
-        isRun = false;
-        // exec('rm -f /workspace/dataset/selfie2anime/testA/* /workspace/dataset/selfie2anime/testB/* ', (error,stdout,stderr)=> {
-        //     if (error){
-        //         console.log(`error:${error.message}`);
-        //         return;
-        //     }
-        //     if (stderr){
-        //         console.log(`stderr:${stderr}`);
-        //         return;
-        //     }
-        // })
+        }
+        catch (e) {
+            res.status(400).json({ "status": false, "result": null });
+        } finally {
+            isRun = false;
+            }     
     }
 });
 module.exports = router;
