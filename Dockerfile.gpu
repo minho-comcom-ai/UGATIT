@@ -7,11 +7,11 @@ RUN pip install --upgrade pip
 RUN apt install -y libsm6 libxext6 libxrender-dev
 
 WORKDIR /workspace
+COPY requirements-gpu.txt .
+RUN pip install flask uwsgi -r requirements-gpu.txt
 COPY --from=wodndl895/ugatit-gpu /workspace/checkpoint /workspace/checkpoint
 
 COPY . .
-#install python package
-RUN pip install flask -r requirements-gpu.txt
 
-EXPOSE 80
-CMD python app.py
+EXPOSE 3010
+CMD uwsgi --http :3010 --wsgi-file app.py --callable app --master --processes 4 --threads 1 --wsgi-disable-file-wrapper
